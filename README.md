@@ -14,16 +14,6 @@ Do not assume a host-specific ACES/DRCM path is a clean workaround for standard 
 
 After Effects 26 is not a supported host. Adobe doesn't release documentation about their OCIO version, but I quickly tested it myself. Its current OCIO implementation does not load `ocio_profile_version: 2.4`.
 
-## Software Support / Updates
-For app support and current release status, start here:
-
-- [Nuke 17 release notes](https://learn.foundry.com/nuke/17.0v1-beta4/content/release_notes/nuke_17.0.html)
-- [Nuke product page](https://www.foundry.com/products/nuke/features)
-- [DaVinci Resolve](https://www.blackmagicdesign.com/products/davinciresolve)
-- [Fusion](https://www.blackmagicdesign.com/products/fusion)
-
-For current release status and OCIO/ACES updates, check the links above.
-
 ## Quick Start
 Create or edit `ocio.json` in your Houdini `packages` folder and replace the path with your local path of the config:
 
