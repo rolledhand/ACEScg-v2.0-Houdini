@@ -6,7 +6,7 @@ Houdini-tuned ACES 2.0 CG OCIO config based on the official ACEScg config, with 
 Stable and ready to use. Built to avoid the usual Houdini OCIO friction so you don't have to. Works with external renderers, tested Arnold in Solaris (Houdini 21). Loaded this config in Nuke 17 and it transferred properly.
 
 ## Compatibility
-This config is `ocio_profile_version: 2.4`, so treat it as OCIO 2.4+ only: [OCIO 2.4 shipped in September 2024](https://opencolorio.readthedocs.io/en/latest/releases/ocio_2_4.html) and is part of the [VFX Reference Platform CY2025](https://vfxplatform.com/), and [Houdini 21 ships with OpenColorIO 2.4.1](https://www.sidefx.com/docs/houdini/news/21/platforms.html) ([SideFX also lists 2.4.1 in its third-party libraries](https://www.sidefx.com/docs/houdini/licenses/)), so Houdini 21 is the intended host.
+This config is `ocio_profile_version: 2.4`, so treat it as OCIO 2.4+ only: [OCIO 2.4 shipped in September 2024](https://opencolorio.readthedocs.io/en/latest/releases/ocio_2_4.html) and is part of the [VFX Reference Platform CY2025](https://vfxplatform.com/), and [Houdini 21 ships with OpenColorIO 2.4.1](https://www.sidefx.com/docs/houdini/news/21/platforms.html) ([SideFX also lists 2.4.1 in its third-party libraries](https://www.sidefx.com/docs/houdini/licenses/)), so Houdini 21 is the intended host. [Nuke 17 ships with OCIO 2.4.2](https://learn.foundry.com/nuke/17.0v1-beta4/content/release_notes/nuke_17.0.html) and is also a confirmed target.
 
 [Resolve/Fusion 19 only documents OpenColorIO 2.3 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf?_v=1712905211000), while [Resolve 20 separately adds ACES 2.0 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_20_New_Features_Guide.pdf?_v=1745391610000) in its own color-management operations, whether to trust a non-OCIO implementation is your call. This means OCIO 2.4 configs should be treated as unsupported there unless your exact build documents 2.4+.
 
@@ -132,7 +132,10 @@ For deeper reading on color science and pipeline decisions:
 - [Chris Brejon: OCIO display transforms and misconceptions (mea culpa)](https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#mea-culpa)
 - [Chris Brejon: What makes a good picture formation?](https://chrisbrejon.com/articles/what-makes-a-good-picture-formation/)
 - [ACESCentral: Per-channel display transform with wider rendering gamut](https://community.acescentral.com/t/per-channel-display-transform-with-wider-rendering-gamut/3768/10)
-- [ARRI-Houdini](https://github.com/rolledhand/ARRI-Houdini) if you want the ARRI Reveal-oriented sibling config instead of the lean ACES 2.0 variant by me.
+
+## Related Projects
+[chrisbrejon/ARRI-REVEAL-OCIO-Config](https://github.com/chrisbrejon/ARRI-REVEAL-OCIO-Config) is a rather universal ARRI Reveal community reference.
+[ARRI-Houdini](https://github.com/rolledhand/ARRI-Houdini) if you want the ARRI Reveal config on ACES 1.3 variant. Tweaked for Houdini by me.
 
 This repo focuses on Houdini-friendly defaults, file rules, and predictable CG working space behavior instead. `ACEScg` as working space is a pipeline sanity choice. Open to feedback and solutions.
 

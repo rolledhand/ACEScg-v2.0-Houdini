@@ -1,0 +1,13 @@
+# macOS / Windows filesystem noise
+.DS_Store
+Thumbs.db
+
+# Editor metadata
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.bak
