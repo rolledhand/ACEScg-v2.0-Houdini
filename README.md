@@ -33,7 +33,7 @@ Create or edit `ocio.json` in your Houdini `packages` folder and replace the pat
   "show": true,
   "load_package_once": true,
   "env": [
-    { "OCIO": "${OCIO-/path/to/ACEScg-Houdini/ACEScg-v2.0_ocio-v2.4.ocio}" }
+    { "OCIO": "${OCIO-/path/to/ACEScg-v2.0-Houdini/ACEScg-v2.0_ocio-v2.4.ocio}" }
   ]
 }
 ```
