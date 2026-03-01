@@ -124,8 +124,8 @@ For deeper reading on color science and pipeline decisions:
 - [ACESCentral: Per-channel display transform with wider rendering gamut](https://community.acescentral.com/t/per-channel-display-transform-with-wider-rendering-gamut/3768/10)
 
 ## Related Projects
-[chrisbrejon/ARRI-REVEAL-OCIO-Config](https://github.com/chrisbrejon/ARRI-REVEAL-OCIO-Config) is a rather universal ARRI Reveal community reference.
-[ARRI-Houdini](https://github.com/rolledhand/ARRI-Houdini) if you want the ARRI Reveal config on ACES 1.3 variant. Tweaked for Houdini by me.
+- [chrisbrejon/ARRI-REVEAL-OCIO-Config](https://github.com/chrisbrejon/ARRI-REVEAL-OCIO-Config) is a rather universal ARRI Reveal community reference.
+- [ARRI-Houdini](https://github.com/rolledhand/ARRI-Houdini) if you want the ARRI Reveal config on ACES 1.3 variant. Tweaked for Houdini by me.
 
 This repo focuses on Houdini-friendly defaults, file rules, and predictable CG working space behavior instead. `ACEScg` as working space is a pipeline sanity choice. Open to feedback and solutions.
 
