@@ -19,7 +19,7 @@ roles:
   color_timing: ACEScct
   compositing_log: ACEScct
   data: Raw
-  default: ACEScg
+  default: ACES2065-1
   matte_paint: ACEScct
   reference: ACEScg
   scene_linear: ACEScg
@@ -28,9 +28,9 @@ roles:
 file_rules:
   - !<Rule> {name: srgb_tx, colorspace: sRGB Encoded Rec.709 (sRGB), pattern: "*srgb_tx*", extension: "*"}
   - !<Rule> {name: srgb_texture, colorspace: sRGB Encoded Rec.709 (sRGB), pattern: "*srgb_texture*", extension: "*"}
+  - !<Rule> {name: acescg, colorspace: ACEScg, pattern: "*ACEScg*", extension: "*"}
   - !<Rule> {name: lin_rec709, colorspace: Linear Rec.709 (sRGB), pattern: "*lin_rec709*", extension: "*"}
   - !<Rule> {name: lin_srgb, colorspace: Linear Rec.709 (sRGB), pattern: "*lin_srgb*", extension: "*"}
-  - !<Rule> {name: acescg, colorspace: ACEScg, pattern: "*ACEScg*", extension: "*"}
   - !<Rule> {name: __usdz_jpg, colorspace: sRGB Encoded Rec.709 (sRGB), regex: ".[uu][ss][dd][zz]\\[.*[jj][pp][gg]\\]"}
   - !<Rule> {name: __usdz_jpeg, colorspace: sRGB Encoded Rec.709 (sRGB), regex: ".[uu][ss][dd][zz]\\[.*[jj][pp][ee][gg]\\]"}
   - !<Rule> {name: __usdz_png, colorspace: sRGB Encoded Rec.709 (sRGB), regex: ".[uu][ss][dd][zz]\\[.*[pp][nn][gg]\\]"}
@@ -43,7 +43,7 @@ file_rules:
   - !<Rule> {name: tif,  colorspace: sRGB Encoded Rec.709 (sRGB), pattern: "*", extension: tif}
   - !<Rule> {name: tiff, colorspace: sRGB Encoded Rec.709 (sRGB), pattern: "*", extension: tiff}
   - !<Rule> {name: exr,  colorspace: ACEScg, pattern: "*", extension: exr}
-  - !<Rule> {name: Default, colorspace: ACEScg}
+  - !<Rule> {name: Default, colorspace: ACES2065-1}
 
 shared_views:
   - !<View> {name: ACES 2.0 - SDR 100 nits (Rec.709), view_transform: ACES 2.0 - SDR 100 nits (Rec.709), display_colorspace: <USE_DISPLAY_NAME>}

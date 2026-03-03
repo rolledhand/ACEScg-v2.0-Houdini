@@ -43,7 +43,7 @@ The stock ACES CG config is already the right kind of base for Houdini. The real
 
 | Setting | Stock ACES CG config | Houdini-tuned config |
 | --- | --- | --- |
-| `default` | not set | `ACEScg` |
+| `default` | not set | `ACES2065-1` |
 | `reference` | not set | `ACEScg` |
 | `scene_linear` | `ACEScg` | `ACEScg` |
 | `color_timing` | `ACEScct` | `ACEScct` |
@@ -51,7 +51,7 @@ The stock ACES CG config is already the right kind of base for Houdini. The real
 | `matte_paint` | `ACEScct` | `ACEScct` |
 | `color_picking` | `sRGB Encoded Rec.709 (sRGB)` | `sRGB Encoded Rec.709 (sRGB)` |
 | `texture_paint` | `sRGB Encoded Rec.709 (sRGB)` | `sRGB Encoded Rec.709 (sRGB)` |
-| `Default` file rule | `ACES2065-1` | `ACEScg` |
+| `Default` file rule | `ACES2065-1` | `ACES2065-1` |
 
 File rules in `./ACEScg-v2.0_ocio-v2.4.ocio`:
 
@@ -72,7 +72,7 @@ File rules in `./ACEScg-v2.0_ocio-v2.4.ocio`:
 - `.tif` -> `sRGB Encoded Rec.709 (sRGB)`
 - `.tiff` -> `sRGB Encoded Rec.709 (sRGB)`
 - `.exr` -> `ACEScg`
-- fallback `Default` -> `ACEScg`
+- fallback `Default` -> `ACES2065-1`
 
 Tag rules take precedence over extension rules.
 USDZ archive-internal file paths are matched by explicit regex rules before the normal extension rules.
@@ -108,7 +108,7 @@ ociocheck --iconfig ACEScg-v2.0_ocio-v2.4.ocio
 If you need to inspect image files directly, [OpenImageIO documentation](https://openimageio.readthedocs.io/en/stable/) is a good reference, and tools like `iinfo` and `oiiotool` are useful for checking metadata, channels, and file properties.
 
 ## Validation
-`ociocheck` passes for this config. Unlike the stock `Default -> ACES2065-1` behavior, this tuned version now falls back to `ACEScg`, which is the practical working assumption for Houdini CG use.
+`ociocheck` passes for this config. The tag and extension rules above provide the Houdini-oriented assignments to ensure smooth functionality.
 
 ## Official / Reference Resources
 For the spec, the host app, and current software support, start here:
