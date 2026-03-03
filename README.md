@@ -58,6 +58,8 @@ File rules in `./ACEScg-v2.0_ocio-v2.4.ocio`:
 - `*srgb_tx*` -> `sRGB Encoded Rec.709 (sRGB)`
 - `*srgb_texture*` -> `sRGB Encoded Rec.709 (sRGB)`
 - `*ACEScg*` -> `ACEScg`
+- `*lin_rec709*` -> `Linear Rec.709 (sRGB)`
+- `*lin_srgb*` -> `Linear Rec.709 (sRGB)`
 - `__usdz_jpg` -> `sRGB Encoded Rec.709 (sRGB)`
 - `__usdz_jpeg` -> `sRGB Encoded Rec.709 (sRGB)`
 - `__usdz_png` -> `sRGB Encoded Rec.709 (sRGB)`
@@ -90,10 +92,11 @@ SideFX explicitly notes that when reading **normal maps** with MaterialX, you sh
 [SideFX MaterialX documentation](https://www.sidefx.com/docs/houdini/solaris/materialx.html)
 
 ### Wrong-Looking Textures
-If a texture looks washed out, oversaturated, or double-transformed, check whether it is already display-referred, whether the filename includes `srgb_tx`, `srgb_texture`, or `ACEScg`, and whether the extension matches the intended automatic rule.
+If a texture looks washed out, oversaturated, or double-transformed, check whether it is already display-referred, whether the filename includes `srgb_tx`, `srgb_texture`, `ACEScg`, `lin_rec709`, or `lin_srgb`, and whether the extension matches the intended automatic rule.
 
 - `albedo.png` -> `sRGB Encoded Rec.709 (sRGB)` (extension rule)
 - `albedo_srgb_tx.png` -> `sRGB Encoded Rec.709 (sRGB)` (tag rule, takes precedence)
+- `backplate_lin_srgb.exr` -> `Linear Rec.709 (sRGB)` (tag rule, takes precedence)
 - `lighting.exr` -> `ACEScg` (extension rule)
 - `lighting_ACEScg.exr` -> `ACEScg` (tag rule)
 
