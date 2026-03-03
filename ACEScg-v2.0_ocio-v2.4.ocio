@@ -28,9 +28,9 @@ roles:
 file_rules:
   - !<Rule> {name: srgb_tx, colorspace: sRGB Encoded Rec.709 (sRGB), pattern: "*srgb_tx*", extension: "*"}
   - !<Rule> {name: srgb_texture, colorspace: sRGB Encoded Rec.709 (sRGB), pattern: "*srgb_texture*", extension: "*"}
-  - !<Rule> {name: acescg_tag, colorspace: ACEScg, pattern: "*ACEScg*", extension: "*"}
   - !<Rule> {name: lin_rec709, colorspace: Linear Rec.709 (sRGB), pattern: "*lin_rec709*", extension: "*"}
   - !<Rule> {name: lin_srgb, colorspace: Linear Rec.709 (sRGB), pattern: "*lin_srgb*", extension: "*"}
+  - !<Rule> {name: acescg, colorspace: ACEScg, pattern: "*ACEScg*", extension: "*"}
   - !<Rule> {name: __usdz_jpg, colorspace: sRGB Encoded Rec.709 (sRGB), regex: ".[uu][ss][dd][zz]\\[.*[jj][pp][gg]\\]"}
   - !<Rule> {name: __usdz_jpeg, colorspace: sRGB Encoded Rec.709 (sRGB), regex: ".[uu][ss][dd][zz]\\[.*[jj][pp][ee][gg]\\]"}
   - !<Rule> {name: __usdz_png, colorspace: sRGB Encoded Rec.709 (sRGB), regex: ".[uu][ss][dd][zz]\\[.*[pp][nn][gg]\\]"}
