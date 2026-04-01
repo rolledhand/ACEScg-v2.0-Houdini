@@ -21,6 +21,8 @@ All looks are applied in ACEScct log space as view-only transforms. They do not 
 | Cold Steel Neutral | Desaturated cool midtones, industrial neutrality, minimal chroma contamination |
 | Chemical Drift | Photographic colour drift; pushed hues, dirty lows, organic midtone shift |
 
+![Look preview](lookpreview-final.png)
+
 > **Fusion / DaVinci Resolve:** Looks **will not work** in Fusion or Resolve. Neither application has official OCIO 2.4 support. The base ACES 2.0 output transforms are available in Resolve 20 via native colour management only, but the OCIO look transforms are not applicable there.
 
 **Note on Adobe colorspaces:** The personal config does not include Adobe RGB or any Adobe-specific colorspaces. They have been removed intentionally — you simply don't need them in a CG pipeline. ACES covers every working, interchange, and delivery space a Houdini/Arnold workflow requires.
