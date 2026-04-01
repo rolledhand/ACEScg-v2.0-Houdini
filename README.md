@@ -1,6 +1,27 @@
 # ACEScg-Houdini
 
-Houdini-tuned ACES 2.0 CG OCIO config based on the official ACEScg config, with practical defaults and file rules for real CG work.
+Houdini-tuned ACES 2.0 CG OCIO config based on the official ACEScg config, with practical defaults, file rules, and curated cinematic looks for real CG work.
+
+## Which config should I use?
+
+**Use `ACEScg-personal-v2.0_ocio-v2.4-.ocio` — recommended for all artists.**
+
+It includes the full ACES 2.0 base output plus 4 curated cinematic looks (Film Dense, Chemical Drift, Carbon Black, Cold Steel Neutral), ready to use in Houdini with no setup beyond pointing OCIO at the file. If you want clean, cinematic output without wrestling with OCIO from scratch, this is the one to use.
+
+`ACEScg-v2.0_ocio-v2.4.ocio` is the clean base config — no looks, minimal. Use it if your pipeline needs a vanilla ACES 2.0 foundation or you want to build your own look stack on top.
+
+## Available Looks
+
+All looks are applied in ACEScct log space as view-only transforms. They do not affect rendered output, texture interpretation, or scene-linear values — they are purely a display choice.
+
+| Look | Character |
+| --- | --- |
+| Film Dense | Heavy contrast, rich blacks, compressed highlights — photochemical print density |
+| Chemical Drift | Photographic colour drift; pushed hues, dirty lows, organic midtone shift |
+| Cold Steel Neutral | Desaturated cool midtones, industrial neutrality, minimal chroma contamination |
+| Carbon Black | Extreme shadow crush, near-black fabric rendering, zero lift |
+
+> **Fusion / DaVinci Resolve:** Looks **will not work** in Fusion or Resolve. Neither application has official OCIO 2.4 support. The base ACES 2.0 output transforms are available in Resolve 20 via native colour management only, but the OCIO look transforms are not applicable there.
 
 ## Status
 Stable and ready to use. Built to avoid the usual Houdini OCIO friction so you don't have to. Works with external renderers, tested Arnold in Solaris (Houdini 21). Loaded this config in Nuke 17 and it transferred properly.
@@ -8,14 +29,29 @@ Stable and ready to use. Built to avoid the usual Houdini OCIO friction so you d
 ## Compatibility
 This config is `ocio_profile_version: 2.4`, so treat it as OCIO 2.4+ only: [OCIO 2.4 shipped in September 2024](https://opencolorio.readthedocs.io/en/latest/releases/ocio_2_4.html) and is part of the [VFX Reference Platform CY2025](https://vfxplatform.com/), and [Houdini 21 ships with OpenColorIO 2.4.1](https://www.sidefx.com/docs/houdini/news/21/platforms.html) ([SideFX also lists 2.4.1 in its third-party libraries](https://www.sidefx.com/docs/houdini/licenses/)), so Houdini 21 is the intended host. [Nuke 17 ships with OCIO 2.4.2](https://learn.foundry.com/nuke/17.0v1-beta4/content/release_notes/nuke_17.0.html) and is also a confirmed target.
 
-[Resolve/Fusion 19 only documents OpenColorIO 2.3 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf?_v=1712905211000), while [Resolve 20 separately adds ACES 2.0 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_20_New_Features_Guide.pdf?_v=1745391610000) in its own color-management operations, whether to trust a non-OCIO implementation is your call. This means OCIO 2.4 configs should be treated as unsupported there unless your exact build documents 2.4+.
+[Resolve/Fusion 19 only documents OpenColorIO 2.3 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf?_v=1712905211000), while [Resolve 20 separately adds ACES 2.0 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_20_New_Features_Guide.pdf?_v=1745391610000) in its own color-management operations. Neither Resolve nor Fusion has official OCIO 2.4 support, so these configs should be treated as unsupported there. This also means **the custom looks in the personal config will not load or apply in Fusion or Resolve** — they require OCIO 2.4. Base ACES 2.0 output is accessible in Resolve 20 only via its native colour management path, not via this OCIO config.
 
 Do not assume a host-specific ACES/DRCM path is a clean workaround for standard OCIO interchange: it can diverge, so validate end-to-end instead of trusting the label, as noted on [ACESCentral](https://community.acescentral.com/t/resolve-color-management-drt-in-ocio/5289).
 
 After Effects 26 is not a supported host. Adobe doesn't release documentation about their OCIO version, but I quickly tested it myself. Its current OCIO implementation does not load `ocio_profile_version: 2.4`.
 
 ## Quick Start
-Create or edit `ocio.json` in your Houdini `packages` folder and replace the path with your local path of the config:
+Create or edit `ocio.json` in your Houdini `packages` folder and replace the path with your local path of the config.
+
+For the personal config (recommended):
+
+```json
+{
+  "enable": true,
+  "show": true,
+  "load_package_once": true,
+  "env": [
+    { "OCIO": "${OCIO-/path/to/ACEScg-v2.0-Houdini/ACEScg-personal-v2.0_ocio-v2.4-.ocio}" }
+  ]
+}
+```
+
+For the base config (no looks):
 
 ```json
 {
@@ -53,7 +89,7 @@ The stock ACES CG config is already the right kind of base for Houdini. The real
 | `texture_paint` | `sRGB Encoded Rec.709 (sRGB)` | `sRGB Encoded Rec.709 (sRGB)` |
 | `Default` file rule | `ACES2065-1` | `ACEScg` |
 
-File rules in `./ACEScg-v2.0_ocio-v2.4.ocio`:
+File rules added in in this config:
 
 - `*srgb_tx*` -> `sRGB Encoded Rec.709 (sRGB)`
 - `*srgb_texture*` -> `sRGB Encoded Rec.709 (sRGB)`
@@ -102,6 +138,10 @@ If a texture looks washed out, oversaturated, or double-transformed, check wheth
 
 ### Validating With `ociocheck`
 ```bash
+# Personal config (recommended)
+ociocheck --iconfig ACEScg-personal-v2.0_ocio-v2.4-.ocio
+
+# Base config
 ociocheck --iconfig ACEScg-v2.0_ocio-v2.4.ocio
 ```
 
