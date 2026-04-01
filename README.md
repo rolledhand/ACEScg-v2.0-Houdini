@@ -4,19 +4,19 @@ Houdini-tuned ACES 2.0 CG OCIO config based on the official ACEScg config, with 
 
 ## Which config should I use?
 
-**Use `ACEScg-personal-v2.0_ocio-v2.4-.ocio` — recommended for all artists.**
+**Use `ACEScg-personal-v2.0_ocio-v2.4-.ocio` (recommended for all artists).**
 
 It includes the full ACES 2.0 base output plus 4 curated cinematic looks (Film Dense, Chemical Drift, Carbon Black, Cold Steel Neutral), ready to use in Houdini with no setup beyond pointing OCIO at the file. If you want clean, cinematic output without wrestling with OCIO from scratch, this is the one to use.
 
-`ACEScg-v2.0_ocio-v2.4.ocio` is the clean base config — no looks, minimal. Use it if your pipeline needs a vanilla ACES 2.0 foundation or you want to build your own look stack on top.
+`ACEScg-v2.0_ocio-v2.4.ocio` is the clean base config with no looks, minimal. Use it if your pipeline needs a vanilla ACES 2.0 foundation or you want to build your own look stack on top.
 
 ## Available Looks
 
-All looks are applied in ACEScct log space as view-only transforms. They do not affect rendered output, texture interpretation, or scene-linear values — they are purely a display choice.
+All looks are applied in ACEScct log space as view-only transforms. They do not affect rendered output, texture interpretation, or scene-linear values. Purely a display choice.
 
 | Look | Character |
 | --- | --- |
-| Film Dense | Heavy contrast, rich blacks, compressed highlights — photochemical print density |
+| Film Dense | Heavy contrast, rich blacks, compressed highlights. Photochemical print density. |
 | Carbon Black | Extreme shadow crush, near-black fabric rendering, zero lift |
 | Cold Steel Neutral | Desaturated cool midtones, industrial neutrality, minimal chroma contamination |
 | Chemical Drift | Photographic colour drift; pushed hues, dirty lows, organic midtone shift |
@@ -25,9 +25,9 @@ All looks are applied in ACEScct log space as view-only transforms. They do not 
 
 > **Fusion / DaVinci Resolve:** Looks **will not work** in Fusion or Resolve. Neither application has official OCIO 2.4 support. The base ACES 2.0 output transforms are available in Resolve 20 via native colour management only, but the OCIO look transforms are not applicable there.
 
-**Note on Adobe colorspaces:** The personal config does not include Adobe RGB or any Adobe-specific colorspaces. They have been removed intentionally — you simply don't need them in a CG pipeline. ACES covers every working, interchange, and delivery space a Houdini/Arnold workflow requires.
+**Note on Adobe colorspaces:** The personal config does not include Adobe RGB or any Adobe-specific colorspaces. They have been removed intentionally. You simply don't need them in a CG pipeline. ACES covers every working, interchange, and delivery space a Houdini/Arnold workflow requires.
 
-**Note on displays:** The personal config ships with only three displays — sRGB, Display P3, and Rec.1886 Rec.709. That covers every monitor a solo artist will realistically work on. Broadcast, HDR, and cinema projection displays have been stripped out; if you're doing deliverables that require those, you're not working solo off a single OCIO config anyway.
+**Note on displays:** The personal config ships with only three displays: sRGB, Display P3, and Rec.1886 Rec.709. That covers every monitor a solo artist will realistically work on. Broadcast, HDR, and cinema projection displays have been stripped out; if you're doing deliverables that require those, you're not working solo off a single OCIO config anyway.
 
 ## Status
 Stable and ready to use. Built to avoid the usual Houdini OCIO friction so you don't have to. Works with external renderers, tested Arnold in Solaris (Houdini 21). Loaded this config in Nuke 17 and it transferred properly.
@@ -35,7 +35,7 @@ Stable and ready to use. Built to avoid the usual Houdini OCIO friction so you d
 ## Compatibility
 This config is `ocio_profile_version: 2.4`, so treat it as OCIO 2.4+ only: [OCIO 2.4 shipped in September 2024](https://opencolorio.readthedocs.io/en/latest/releases/ocio_2_4.html) and is part of the [VFX Reference Platform CY2025](https://vfxplatform.com/), and [Houdini 21 ships with OpenColorIO 2.4.1](https://www.sidefx.com/docs/houdini/news/21/platforms.html) ([SideFX also lists 2.4.1 in its third-party libraries](https://www.sidefx.com/docs/houdini/licenses/)), so Houdini 21 is the intended host. [Nuke 17 ships with OCIO 2.4.2](https://learn.foundry.com/nuke/17.0v1-beta4/content/release_notes/nuke_17.0.html) and is also a confirmed target.
 
-[Resolve/Fusion 19 only documents OpenColorIO 2.3 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf?_v=1712905211000), while [Resolve 20 separately adds ACES 2.0 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_20_New_Features_Guide.pdf?_v=1745391610000) in its own color-management operations. Neither Resolve nor Fusion has official OCIO 2.4 support, so these configs should be treated as unsupported there. This also means **the custom looks in the personal config will not load or apply in Fusion or Resolve** — they require OCIO 2.4. Base ACES 2.0 output is accessible in Resolve 20 only via its native colour management path, not via this OCIO config.
+[Resolve/Fusion 19 only documents OpenColorIO 2.3 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf?_v=1712905211000), while [Resolve 20 separately adds ACES 2.0 support](https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_20_New_Features_Guide.pdf?_v=1745391610000) in its own color-management operations. Neither Resolve nor Fusion has official OCIO 2.4 support, so these configs should be treated as unsupported there. This also means **the custom looks in the personal config will not load or apply in Fusion or Resolve**, as they require OCIO 2.4. Base ACES 2.0 output is accessible in Resolve 20 only via its native colour management path, not via this OCIO config.
 
 Do not assume a host-specific ACES/DRCM path is a clean workaround for standard OCIO interchange: it can diverge, so validate end-to-end instead of trusting the label, as noted on [ACESCentral](https://community.acescentral.com/t/resolve-color-management-drt-in-ocio/5289).
 
@@ -171,6 +171,7 @@ For deeper reading on color science and pipeline decisions:
 - [Chris Brejon: OCIO display transforms and misconceptions (mea culpa)](https://chrisbrejon.com/articles/ocio-display-transforms-and-misconceptions/#mea-culpa)
 - [Chris Brejon: What makes a good picture formation?](https://chrisbrejon.com/articles/what-makes-a-good-picture-formation/)
 - [ACESCentral: Per-channel display transform with wider rendering gamut](https://community.acescentral.com/t/per-channel-display-transform-with-wider-rendering-gamut/3768/10)
+- [Apple: Use reference modes with your Apple display](https://support.apple.com/en-gu/108321)
 
 ## Related Projects
 - [chrisbrejon/ARRI-REVEAL-OCIO-Config](https://github.com/chrisbrejon/ARRI-REVEAL-OCIO-Config) is a rather universal ARRI Reveal community reference.
