@@ -8,7 +8,7 @@ Houdini-tuned ACES 2.0 CG OCIO config based on the official ACEScg config, with 
 
 It includes the full ACES 2.0 base output plus 4 curated cinematic looks (Film Dense, Chemical Drift, Carbon Black, Cold Steel Neutral), ready to use in Houdini with no setup beyond pointing OCIO at the file. If you want clean, cinematic output without wrestling with OCIO from scratch, this is the one to use.
 
-`ACEScg-v2.0_ocio-v2.4.ocio` is the clean base config with no looks, minimal. Use it if your pipeline needs a vanilla ACES 2.0 foundation or you want to build your own look stack on top.
+`ACEScg-v2.0_ocio-v2.4.ocio` is the base config with no looks. It follows the minimal tweaks for a smooth CG transfer pipeline, with practical defaults and file rules that make it behave correctly in Houdini out of the box. Use it if you want a clean ACES 2.0 foundation to build your own look stack on top of.
 
 ## Available Looks
 
