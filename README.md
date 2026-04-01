@@ -27,6 +27,8 @@ All looks are applied in ACEScct log space as view-only transforms. They do not 
 
 **Note on Adobe colorspaces:** The personal config does not include Adobe RGB or any Adobe-specific colorspaces. They have been removed intentionally — you simply don't need them in a CG pipeline. ACES covers every working, interchange, and delivery space a Houdini/Arnold workflow requires.
 
+**Note on displays:** The personal config ships with only three displays — sRGB, Display P3, and Rec.1886 Rec.709. That covers every monitor a solo artist will realistically work on. Broadcast, HDR, and cinema projection displays have been stripped out; if you're doing deliverables that require those, you're not working solo off a single OCIO config anyway.
+
 ## Status
 Stable and ready to use. Built to avoid the usual Houdini OCIO friction so you don't have to. Works with external renderers, tested Arnold in Solaris (Houdini 21). Loaded this config in Nuke 17 and it transferred properly.
 
