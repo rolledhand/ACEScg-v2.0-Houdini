@@ -179,6 +179,14 @@ For deeper reading on color science and pipeline decisions:
 
 This repo focuses on Houdini-friendly defaults, file rules, and predictable CG working space behavior instead. `ACEScg` as working space is a pipeline sanity choice. Open to feedback and solutions.
 
+## Default Transform Comparison
+
+A quick visual comparison of a few default output transform directions applied to the same scene, included as a practical reference only. Different transforms can produce materially different picture formation, contrast distribution, highlight behavior, and chroma character even before any custom look is applied. This is worth understanding before committing to a config.
+
+![Default transform comparison](transform-comparison.png)
+
+Treat this as a sanity-check illustration, not a universal ranking. The exact result will vary depending on your host application, render delegate, display calibration, and viewing conditions. Validate the full chain inside your own setup before drawing conclusions.
+
 ## Tweaking tips for the brave ones
 The ACES 2.0 base is cleaner than the ARRI config which runs on ACES 1.3, but the same rule still applies: don't trust a pipeline until you validate the whole chain.
 
