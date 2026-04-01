@@ -17,11 +17,13 @@ All looks are applied in ACEScct log space as view-only transforms. They do not 
 | Look | Character |
 | --- | --- |
 | Film Dense | Heavy contrast, rich blacks, compressed highlights — photochemical print density |
-| Chemical Drift | Photographic colour drift; pushed hues, dirty lows, organic midtone shift |
-| Cold Steel Neutral | Desaturated cool midtones, industrial neutrality, minimal chroma contamination |
 | Carbon Black | Extreme shadow crush, near-black fabric rendering, zero lift |
+| Cold Steel Neutral | Desaturated cool midtones, industrial neutrality, minimal chroma contamination |
+| Chemical Drift | Photographic colour drift; pushed hues, dirty lows, organic midtone shift |
 
 > **Fusion / DaVinci Resolve:** Looks **will not work** in Fusion or Resolve. Neither application has official OCIO 2.4 support. The base ACES 2.0 output transforms are available in Resolve 20 via native colour management only, but the OCIO look transforms are not applicable there.
+
+**Note on Adobe colorspaces:** The personal config does not include Adobe RGB or any Adobe-specific colorspaces. They have been removed intentionally — you simply don't need them in a CG pipeline. ACES covers every working, interchange, and delivery space a Houdini/Arnold workflow requires.
 
 ## Status
 Stable and ready to use. Built to avoid the usual Houdini OCIO friction so you don't have to. Works with external renderers, tested Arnold in Solaris (Houdini 21). Loaded this config in Nuke 17 and it transferred properly.

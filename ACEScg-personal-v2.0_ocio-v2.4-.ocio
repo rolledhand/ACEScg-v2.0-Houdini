@@ -11,12 +11,13 @@ description: |
   --------------------------------------------------------------------------------------
 
   Base ACES 2.0 output transforms (SDR only) plus 4 curated cinematic looks:
-  Film Dense, Chemical Drift, Cold Steel Neutral, Carbon Black.
+  Film Dense, Carbon Black, Cold Steel Neutral, Chemical Drift.
 
   All looks are view-only transforms applied in ACEScct log space.
   They do not affect rendered output or texture interpretation.
 
   SDR displays only: sRGB, Display P3, Rec.1886 Rec.709.
+  Adobe colorspaces have been removed — they are not needed in a CG pipeline.
 
   NOTE: Looks require OCIO 2.4. They will not work in DaVinci Resolve or Fusion,
   which do not have official OCIO 2.4 support.
@@ -58,28 +59,28 @@ shared_views:
   - !<View> {name: ACES 2.0 - SDR 100 nits (Rec.709), view_transform: ACES 2.0 - SDR 100 nits (Rec.709), display_colorspace: <USE_DISPLAY_NAME>}
   - !<View> {name: ACES 2.0 - SDR 100 nits (P3 D65), view_transform: ACES 2.0 - SDR 100 nits (P3 D65), display_colorspace: <USE_DISPLAY_NAME>}
   - !<View> {name: ACES 2.0 - SDR 100 nits (Rec.709) - Film Dense, view_transform: ACES 2.0 - SDR 100 nits (Rec.709), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Film Dense"}
-  - !<View> {name: ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, view_transform: ACES 2.0 - SDR 100 nits (Rec.709), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Chemical Drift"}
   - !<View> {name: ACES 2.0 - SDR 100 nits (Rec.709) - Carbon Black, view_transform: ACES 2.0 - SDR 100 nits (Rec.709), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Carbon Black"}
   - !<View> {name: ACES 2.0 - SDR 100 nits (Rec.709) - Cold Steel Neutral, view_transform: ACES 2.0 - SDR 100 nits (Rec.709), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Cold Steel Neutral"}
+  - !<View> {name: ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, view_transform: ACES 2.0 - SDR 100 nits (Rec.709), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Chemical Drift"}
   - !<View> {name: ACES 2.0 - SDR 100 nits (P3 D65) - Film Dense, view_transform: ACES 2.0 - SDR 100 nits (P3 D65), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Film Dense"}
-  - !<View> {name: ACES 2.0 - SDR 100 nits (P3 D65) - Chemical Drift, view_transform: ACES 2.0 - SDR 100 nits (P3 D65), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Chemical Drift"}
   - !<View> {name: ACES 2.0 - SDR 100 nits (P3 D65) - Carbon Black, view_transform: ACES 2.0 - SDR 100 nits (P3 D65), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Carbon Black"}
   - !<View> {name: ACES 2.0 - SDR 100 nits (P3 D65) - Cold Steel Neutral, view_transform: ACES 2.0 - SDR 100 nits (P3 D65), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Cold Steel Neutral"}
+  - !<View> {name: ACES 2.0 - SDR 100 nits (P3 D65) - Chemical Drift, view_transform: ACES 2.0 - SDR 100 nits (P3 D65), display_colorspace: <USE_DISPLAY_NAME>, looks: "ACES 1.3 Reference Gamut Compression, Chemical Drift"}
   - !<View> {name: Un-tone-mapped, view_transform: Un-tone-mapped, display_colorspace: <USE_DISPLAY_NAME>}
 
 displays:
   sRGB - Display:
     - !<View> {name: Raw, colorspace: Raw}
-    - !<Views> [ACES 2.0 - SDR 100 nits (Rec.709), ACES 2.0 - SDR 100 nits (Rec.709) - Film Dense, ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, ACES 2.0 - SDR 100 nits (Rec.709) - Carbon Black, ACES 2.0 - SDR 100 nits (Rec.709) - Cold Steel Neutral, Un-tone-mapped]
+    - !<Views> [ACES 2.0 - SDR 100 nits (Rec.709), ACES 2.0 - SDR 100 nits (Rec.709) - Film Dense, ACES 2.0 - SDR 100 nits (Rec.709) - Carbon Black, ACES 2.0 - SDR 100 nits (Rec.709) - Cold Steel Neutral, ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, Un-tone-mapped]
   Display P3 - Display:
     - !<View> {name: Raw, colorspace: Raw}
-    - !<Views> [ACES 2.0 - SDR 100 nits (P3 D65), ACES 2.0 - SDR 100 nits (P3 D65) - Film Dense, ACES 2.0 - SDR 100 nits (P3 D65) - Chemical Drift, ACES 2.0 - SDR 100 nits (P3 D65) - Carbon Black, ACES 2.0 - SDR 100 nits (P3 D65) - Cold Steel Neutral, Un-tone-mapped]
+    - !<Views> [ACES 2.0 - SDR 100 nits (P3 D65), ACES 2.0 - SDR 100 nits (P3 D65) - Film Dense, ACES 2.0 - SDR 100 nits (P3 D65) - Carbon Black, ACES 2.0 - SDR 100 nits (P3 D65) - Cold Steel Neutral, ACES 2.0 - SDR 100 nits (P3 D65) - Chemical Drift, Un-tone-mapped]
   Rec.1886 Rec.709 - Display:
     - !<View> {name: Raw, colorspace: Raw}
-    - !<Views> [ACES 2.0 - SDR 100 nits (Rec.709), ACES 2.0 - SDR 100 nits (Rec.709) - Film Dense, ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, ACES 2.0 - SDR 100 nits (Rec.709) - Carbon Black, ACES 2.0 - SDR 100 nits (Rec.709) - Cold Steel Neutral, Un-tone-mapped]
+    - !<Views> [ACES 2.0 - SDR 100 nits (Rec.709), ACES 2.0 - SDR 100 nits (Rec.709) - Film Dense, ACES 2.0 - SDR 100 nits (Rec.709) - Carbon Black, ACES 2.0 - SDR 100 nits (Rec.709) - Cold Steel Neutral, ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, Un-tone-mapped]
 
 active_displays: [sRGB - Display, Display P3 - Display, Rec.1886 Rec.709 - Display]
-active_views: [ACES 2.0 - SDR 100 nits (Rec.709), ACES 2.0 - SDR 100 nits (P3 D65), ACES 2.0 - SDR 100 nits (Rec.709) - Film Dense, ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, ACES 2.0 - SDR 100 nits (Rec.709) - Carbon Black, ACES 2.0 - SDR 100 nits (Rec.709) - Cold Steel Neutral, ACES 2.0 - SDR 100 nits (P3 D65) - Film Dense, ACES 2.0 - SDR 100 nits (P3 D65) - Chemical Drift, ACES 2.0 - SDR 100 nits (P3 D65) - Carbon Black, ACES 2.0 - SDR 100 nits (P3 D65) - Cold Steel Neutral, Un-tone-mapped, Raw]
+active_views: [ACES 2.0 - SDR 100 nits (Rec.709), ACES 2.0 - SDR 100 nits (P3 D65), ACES 2.0 - SDR 100 nits (Rec.709) - Film Dense, ACES 2.0 - SDR 100 nits (Rec.709) - Carbon Black, ACES 2.0 - SDR 100 nits (Rec.709) - Cold Steel Neutral, ACES 2.0 - SDR 100 nits (Rec.709) - Chemical Drift, ACES 2.0 - SDR 100 nits (P3 D65) - Film Dense, ACES 2.0 - SDR 100 nits (P3 D65) - Carbon Black, ACES 2.0 - SDR 100 nits (P3 D65) - Cold Steel Neutral, ACES 2.0 - SDR 100 nits (P3 D65) - Chemical Drift, Un-tone-mapped, Raw]
 inactive_colorspaces: [CIE XYZ-D65 - Display-referred, CIE XYZ-D65 - Scene-referred]
 
 looks:
