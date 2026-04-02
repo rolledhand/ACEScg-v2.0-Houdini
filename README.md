@@ -2,8 +2,6 @@
 
 Houdini-tuned ACES 2.0 CG OCIO config based on the official ACEScg config, with practical defaults, file rules, and curated cinematic looks for real CG work.
 
-![Look preview](lookpreview-final.png)
-
 ## Which config should I use?
 
 **Use `ACEScg-personal-v2.0_ocio-v2.4-.ocio` (recommended for all artists).**
@@ -22,6 +20,8 @@ All looks are applied in ACEScct log space as view-only transforms. They do not 
 | Carbon Black | Extreme shadow crush, near-black fabric rendering, zero lift |
 | Cold Steel Neutral | Desaturated cool midtones, industrial neutrality, minimal chroma contamination |
 | Chemical Drift | Photographic colour drift; pushed hues, dirty lows, organic midtone shift |
+
+![Look preview](lookpreview-final.png)
 
 > **Fusion / DaVinci Resolve:** Looks **will not work** in Fusion or Resolve. Neither application has official OCIO 2.4 support. The base ACES 2.0 output transforms are available in Resolve 20 via native colour management only, but the OCIO look transforms are not applicable there.
 
